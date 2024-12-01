@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Slide;
 use App\Repositories\GenralSettingRepository;
 use App\Repositories\ItemRepository;
 use App\Repositories\MainCategoriesRepository;
@@ -22,13 +23,15 @@ class HomeController extends Controller
     public function index(Request $request)
     {
 
-        \SEO::setTitle(__('home'))
-            ->setDescription(__('rwan cacke - home'));
-
-
         CartService::login($request);
-        return view('site.welcome');
 
+        $sliders = Slide::all();
+        return view('site.welcome', compact('sliders'));
+
+    }
+
+    public function aboutUs(){
+        return view('site.about-us');
     }
 
     public function logout(Request $request)

@@ -21,29 +21,39 @@ class SliderResource extends Resource
     protected static ?string $navigationGroup = 'Settings';
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    
+
 
     protected static ?int $navigationSort = 22;
 
 
     public static function form(Form $form): Form
-    {   
+    {
         return $form
             ->schema([
                 Forms\Components\TextInput::make('title')
                     ->label('Title')
                     ->required(),
                 Forms\Components\TextInput::make('url')
-                    ->label('URL')
-                    ->url()
+                    ->label('Text')
+
                     ->nullable(),
                 Forms\Components\TextInput::make('index')
                     ->label('Order Index')
                     ->numeric()
                     ->default(0)
                     ->required(),
-                    SpatieMediaLibraryFileUpload::make('image')
-                    ->collection('slider')
+                SpatieMediaLibraryFileUpload::make('image')
+                    ->collection('slider'),
+                SpatieMediaLibraryFileUpload::make('layer1')
+                    ->label('Layer One')
+                    ->collection('layer1'),
+                SpatieMediaLibraryFileUpload::make('layer2')
+                    ->label('Layer Tow')
+                    ->collection('layer2')
+                ,
+                SpatieMediaLibraryFileUpload::make('layer3')
+                    ->label('Layer Three')
+                    ->collection('layer3')
             ]);
     }
 

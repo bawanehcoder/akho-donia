@@ -62,7 +62,7 @@ Route::get('/test', function () {
 
 Route::get('shop', function () {
     // return redirect()->route('products.index');
-    return view('site.cat.index');
+    return redirect('products/index');
 
 })->name('mainshop');
 
@@ -300,3 +300,5 @@ Route::get('app/change-language', ['lang' => LanguageController::class, 'changeL
 Route::get('cc', function () {
     Artisan::call('optimize:clear');
 });
+
+Route::get('about-us', [HomeController::class, 'aboutUs'])->name('about-us');

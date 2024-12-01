@@ -6,6 +6,7 @@ use App\Filament\Resources\BranchResource\Pages;
 use App\Filament\Resources\BranchResource\RelationManagers;
 use App\Models\Branche;
 use Filament\Forms;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -40,6 +41,8 @@ class BranchResource extends Resource
             Forms\Components\TextInput::make('Map')
                 ->label('Map URL')
                 ->url(),
+                SpatieMediaLibraryFileUpload::make('image')
+                    ->collection('branche'),
             ]);
     }
 

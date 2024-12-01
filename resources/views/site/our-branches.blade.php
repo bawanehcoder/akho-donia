@@ -11,36 +11,23 @@
 @endsection
 @section('content')
 
-    <!--  Section Start -->
-    <div class="shop-product-section blog-sidebar blog-sidebar-right">
-        <div class="container custom-container">
-            <div class="row">
-                <div class="col-12 section-padding-04">
-                    <div class="blog-sidebar_ml">
-                        @foreach($branches??[] as $index=>$branche)
-                            <div class="blog-post">
-
-                                <div class="blog-post__content">
-                                    <h3 class="blog-post__title">{{$branche->Phone}}</h3>
-                                    <h4 class="blog-post__text">{{$branche->AddresAr}}</h4>
-
-                                    <iframe class="map-responsive embed-responsive-item" width="100%" height="450px"
-                                            style="border:6px solid white;"
-                                            loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
-                                            src="{{$branche->Map}}"></iframe>
-
-
-                                </div>
-                            </div>
-                        @endforeach
-
-
-                    </div>
-                </div>
-            </div>
+<div class="branches">
+    <h2>الفروع</h2>
+    @foreach($branches??[] as $index=>$branche)
+    <div class="branch-card">
+        <img src="{{ asset( $branche->getFirstMediaUrl('branche','full') ) }}" alt="فرع 1">
+        <div class="branch-details">
+            {{-- <h3>اسم الفرع</h3> --}}
+            <p><i class="fas fa-map-marker-alt"></i> {{$branche->AddresAr}}</p>
+            <p><i class="fas fa-phone"></i> {{$branche->Phone}}</p>
+            <p><i class="fas fa-clock"></i> مواعيد العمل:
+            </p> من 9 صباحاً وحتى الـ 5 مساءً</p>
         </div>
     </div>
-    <!--  Section End -->
+    @endforeach
+</div>
+
+
 
 @endsection
 @section('scripts')

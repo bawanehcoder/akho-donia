@@ -45,7 +45,7 @@ class ItemResource extends Resource
                 // TextInput::make('category'),
                 Select::make('category')
                     ->options(function () {
-                        return Category::whereNotNull('Name')->where('blob', 'main-categories')->where('CatID', 0)->pluck('Name', 'id');
+                        return Category::whereNotNull('Name')->where('CatID', 0)->pluck('Name', 'id');
                     })                // اختيار المدينة
                     ->required()
                     ->default(2)
